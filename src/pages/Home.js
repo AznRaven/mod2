@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <div>Home</div>
       <Link to="/marvel">
-        <div>Marvel</div>
+        <div>Marvels</div>
       </Link>
     </>
   );
