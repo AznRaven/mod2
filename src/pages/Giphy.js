@@ -5,8 +5,9 @@ export default function Giphy() {
   const [input, setInput] = useState('random');
   const [search, setSearch] = useState('');
 
-  let key = 'HDeTBIMuoBW6DtzdV9Ui71Wvx36yPMav';
-
+//   let key = 'HDeTBIMuoBW6DtzdV9Ui71Wvx36yPMav';
+  let key = process.env.REACT_APP_KEY;
+console.log(key)
   useEffect(() => {
     let url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}`;
     const dataFetch = async () => {

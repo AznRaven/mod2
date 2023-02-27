@@ -24,12 +24,11 @@ export default function Marvel() {
   const dataFetch = async () => {
     try {
       let ts = Number(new Date());
+      console.log(ts)
       let hash = MD5(ts + key2 + key1).toString();
       let base = `http://gateway.marvel.com/v1/public/characters`;
       //   let url = `{${base}?ts=${ts}&apikey=${key1}&hash=${hash}&name=${name}`
-      let url = `${base}?ts=${ts}&apikey=${key1}&hash=${hash}&limit=100&nameStartsWith=${encodeURIComponent(
-        name
-      )}`;
+      let url = `${base}?ts=${ts}&apikey=${key1}&hash=${hash}&limit=100&nameStartsWith=${name}`;
       console.log(url);
 
       const response = await fetch(url);

@@ -20,10 +20,11 @@ export default function Pokemon() {
   }, [url]);
 
   return (
+    
     <>
 
       <h1>Pokemon</h1>
-      <h1>{data.name}</h1>
+      <h1>{data.name && <div>{data.name}</div>}</h1>
       {data.sprites && <img style={{ width: '30vh', height: '30vh' }} src={data.sprites.front_default} alt={data.name} />}
       {data.sprites && <img style={{ width: '30vh', height: '30vh' }} src={data.sprites.back_default} alt={data.name} />}
         <div>
