@@ -33,7 +33,7 @@ export default function Pokemons() {
   }, [url]);
 
   return (
-    <>
+    <div className="cpoke">
       <h1>Pokemon</h1>
       {pokemons}
       {/* <Link to='/pokemon/:{1}'> */}
@@ -58,6 +58,6 @@ export default function Pokemons() {
       {/* <div className="articleC"> */}
       {/* {data} */}
       {/* </div> */}
-    </>
+    </div>
   );
 }
