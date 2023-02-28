@@ -57,7 +57,9 @@ export default function RickAndMortyItem() {
       <br />
       {error && <div>Error: {error}</div>}
       {data && (
-        <>
+        <div style={{
+            height:"100vh",
+          }}>
           <div
             style={{
               //   display: "flex",
@@ -86,7 +88,7 @@ export default function RickAndMortyItem() {
           </div>
 
           <div></div>
-        </>
+        </div>
       )}
     </div>
   );

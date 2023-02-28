@@ -15,11 +15,11 @@ export default function News() {
       setData(data);
       let mapNews = await data.articles.map((x, i) => {
         return (
-          <div >
-            <h2>{x.title}</h2>
+          <div>
             <a href={x.url} target="_blank" rel="noreferrer">
-              <img src={x.urlToImage} alt={x.title}></img>
+              <h2>{x.title}</h2>
             </a>
+            {x.urlToImage && <img src={x.urlToImage} alt={x.title}></img>}
           </div>
         );
       });
@@ -36,16 +36,18 @@ export default function News() {
         alt="news"
         style={{ width: "400px" }}
       ></img>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gridGap: "20px",
-            }}
-          >{data}</div>
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gridGap: "20px",
+        }}
+      >
+        {data}
+      </div>
     </>
   );
 }
