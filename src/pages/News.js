@@ -13,7 +13,7 @@ export default function News() {
       try {
         const datas = await (await fetch(url)).json();
         console.log(datas.articles);
-        let mapNews = datas.articles.map((x, i) => {
+        let mapNews = datas?.articles?.map((x, i) => {
           return (
             <div>
               <a href={x.url} target="_blank" rel="noreferrer">
