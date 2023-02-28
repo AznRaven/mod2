@@ -20,7 +20,7 @@ export default function Marvel() {
       console.log(ts);
 
       let hash = MD5(ts + key2 + key1).toString();
-      let base = `http://gateway.marvel.com/v1/public/characters`;
+      let base = `http://gateway.marvel.com/v1/public/characters/`;
       let url = `${base}?ts=${ts}&apikey=${key1}&hash=${hash}&limit=100&nameStartsWith=${name}`;
 
       console.log(url);
