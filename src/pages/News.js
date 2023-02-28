@@ -19,11 +19,12 @@ export default function News() {
               <a href={x.url} target="_blank" rel="noreferrer">
                 <h2>{x.title}</h2>
               </a>
-              {x.urlToImage && <img src={x.urlToImage} alt={x.title}></img>}
+              {/* {x.urlToImage && <img src={x.urlToImage} alt={x.title}></img>} */}
             </div>
           );
         });
         setData(mapNews);
+        console.log(mapNews)
       } catch (e) {
         console.error(e)
       }
