@@ -43,7 +43,14 @@ export default function Weather() {
 
   return (
     <>
-      <h1>Weather</h1>
+      <img
+        src={require("../img/weather.png")}
+        alt="weather"
+        style={{ width: "400px" }}
+      ></img>
+      <br/>
+      <br/>
+      <br/>
       <h1>Dallas</h1>
       {data.weather[0] && <h2>Main: {data.weather[0].main}</h2>}
       {data.weather[0] && <h2>Description: {data.weather[0].description}</h2>}

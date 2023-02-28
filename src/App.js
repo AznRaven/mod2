@@ -9,6 +9,8 @@ import Weather from "./pages/Weather";
 import Pokemons from './pages/Pokemons';
 import Pokemon from './pages/Pokemon';
 import About from './pages/About';
+import RickAndMorty from './pages/RickAndMorty';
+import RickAndMortyItem from './pages/RickAndMortyItem';
 
 export default function App() {
   return (
@@ -21,6 +23,8 @@ export default function App() {
         <Route path="/news" element={<News/>} />
         <Route path="/pokemons" element={<Pokemons/>} />
         <Route path="/pokemon/:symbol" element={<Pokemon/>} />
+        <Route path="/rick_morty" element={<RickAndMorty/>} />
+        <Route path="/rick_morty/:symbol" element={<RickAndMortyItem/>} />
         <Route path="/weather" element={<Weather/>} />
         <Route path="/about" element={<About/>} />
       </Routes>

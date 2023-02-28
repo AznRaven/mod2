@@ -1,13 +1,11 @@
-import MD5 from "crypto-js/md5";
 import { useEffect, useState } from "react";
-export default function Marvel() {
+import { Link } from "react-router-dom";
+
+export default function RickAndMorty() {
   const [data, setData] = useState({});
   const [input, setInput] = useState("");
   const [error, setError] = useState(null);
-  const [name, setName] = useState("hulk");
-
-  let key1 = process.env.REACT_APP_MARVEL_PUBLIC;
-  let key2 = process.env.REACT_APP_MARVEL_PRIVATE;
+  const [name, setName] = useState("");
 
   useEffect(() => {
     dataFetch();
@@ -15,13 +13,10 @@ export default function Marvel() {
 
   const dataFetch = async () => {
     try {
-      let ts = Number(new Date());
+      let search = `?name=${name}`
 
-      console.log(ts);
-
-      let hash = MD5(ts + key2 + key1).toString();
-      let base = `http://gateway.marvel.com/v1/public/characters`;
-      let url = `${base}?ts=${ts}&apikey=${key1}&hash=${hash}&limit=100&nameStartsWith=${name}`;
+      let base = `https://rickandmortyapi.com/api`;
+      let url = `${base}/character/${search}`;
 
       console.log(url);
 
@@ -39,9 +34,8 @@ export default function Marvel() {
   };
   return (
     <div className="cmarvel">
-      
       <img
-        src={require("../img/marvel_logo.png")}
+        src={require("../img/rick.png")}
         alt="marvel"
         style={{ width: "400px" }}
       ></img>
@@ -59,22 +53,24 @@ export default function Marvel() {
       >
         Submit
       </button>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       {error && <div>Error: {error}</div>}
-      {data?.data?.results && (
+      {data.results && (
         <>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
+              gridTemplateColumns: "repeat(4, 1fr)",
               gridGap: "20px",
-              
+              color: "white",
             }}
           >
-            {data.data.results.map((x, i) => {
+            {data.results.map((x, i) => {
               return (
+
+                  <Link to={`/rick_morty/${x.id}`}>
                 <div
                   key={x.id}
                   style={{
@@ -82,17 +78,17 @@ export default function Marvel() {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    border: "1px solid white"
+                    border: "1px solid white",
                   }}
                 >
                   <h1>{x.name}</h1>
-                  <img
-                    style={{ width: "200px" }}
-                    src={`${x.thumbnail.path}.${x.thumbnail.extension}`}
-                    alt={x.name}
-                  />
-                  <p>{x.description}</p>
+                    <img
+                      style={{ width: "200px" }}
+                      src={x.image}
+                      alt={x.name}
+                    />
                 </div>
+                  </Link>
               );
             })}
           </div>

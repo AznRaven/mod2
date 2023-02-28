@@ -9,7 +9,6 @@ export default function Pokemons() {
 
   let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
   useEffect(() => {
-    
     const dataFetch = async () => {
       console.log(url);
       const data = await (await fetch(url)).json();
@@ -19,7 +18,7 @@ export default function Pokemons() {
         console.log(x);
         return (
           <div className="pokemon">
-            <Link to={`/pokemon/${i+1}`}>
+            <Link to={`/pokemon/${i + 1}`}>
               <h1>{x.name}</h1>
             </Link>
             {/* <img src={x.sprites.front_default} alt={x.name}></img> */}
@@ -34,14 +33,14 @@ export default function Pokemons() {
 
   return (
     <div className="cpoke">
-      <h1>Pokemon</h1>
-      {pokemons}
-      {/* <Link to='/pokemon/:{1}'> */}
-      {/* <h1>{data.results[0].name}</h1> */}
-      {/* </Link> */}
-      {/* <img src={data.sprites.front_default} alt={data.name}></img>
-      <img src={data.sprites.back_default} alt={data.name}></img> */}
-
+      <img
+        src={require("../img/pokemon.png")}
+        alt="pokemon"
+        style={{ width: "400px" }}
+      ></img>
+      <br/>
+      <br/>
+      <br/>
       <input
         value={input}
         onChange={(e) => {
@@ -55,6 +54,14 @@ export default function Pokemons() {
       >
         Submit
       </button>
+      {pokemons}
+      {/* <Link to='/pokemon/:{1}'> */}
+      {/* <h1>{data.results[0].name}</h1> */}
+      {/* </Link> */}
+      {/* <img src={data.sprites.front_default} alt={data.name}></img>
+      <img src={data.sprites.back_default} alt={data.name}></img> */}
+
+      
       {/* <div className="articleC"> */}
       {/* {data} */}
       {/* </div> */}

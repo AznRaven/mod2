@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 
 export default function Giphy() {
   const [data, setData] = useState([]);
-  const [input, setInput] = useState('random');
-  const [search, setSearch] = useState('');
+  const [input, setInput] = useState("random");
+  const [search, setSearch] = useState("random");
 
-//   let key = 'HDeTBIMuoBW6DtzdV9Ui71Wvx36yPMav';
+  //   let key = 'HDeTBIMuoBW6DtzdV9Ui71Wvx36yPMav';
   let key = process.env.REACT_APP_KEY;
-console.log(key)
+  console.log(key);
   useEffect(() => {
     let url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}`;
     const dataFetch = async () => {
@@ -20,8 +20,15 @@ console.log(key)
   }, [search]);
 
   return (
-    <>
-      <h1>Giphy</h1>
+    <div className="cmarvel">
+      <img
+        src={require("../img/giphy.png")}
+        alt="giphy"
+        style={{ width: "400px" }}
+      ></img>
+      <br />
+      <br />
+      <br />
       <input
         value={input}
         onChange={(e) => {
@@ -30,13 +37,15 @@ console.log(key)
       />
       <button
         onClick={(e) => {
-            setSearch(input);
+          setSearch(input);
         }}
       >
         Submit
       </button>
       <br />
-      <div className="articleC">
+      <br />
+      <br />
+      <div >
         <div
           style={{
             display: "grid",
@@ -45,10 +54,16 @@ console.log(key)
           }}
         >
           {data.map((gif) => (
-            <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
+            <div >
+              <img
+                key={gif.id}
+                src={gif.images.fixed_height.url}
+                alt={gif.title}
+              />
+            </div>
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }

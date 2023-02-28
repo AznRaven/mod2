@@ -15,7 +15,7 @@ export default function News() {
       setData(data);
       let mapNews = await data.articles.map((x, i) => {
         return (
-          <div className="article">
+          <div >
             <h2>{x.title}</h2>
             <a href={x.url} target="_blank" rel="noreferrer">
               <img src={x.urlToImage} alt={x.title}></img>
@@ -31,11 +31,21 @@ export default function News() {
 
   return (
     <>
-      <h1>News</h1>
-    <div className="articleC">
-      {data}
-    </div>
+      <img
+        src={require("../img/news.png")}
+        alt="news"
+        style={{ width: "400px" }}
+      ></img>
+      <br/>
+      <br/>
+      <br/>
+      <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gridGap: "20px",
+            }}
+          >{data}</div>
     </>
-    
   );
 }
