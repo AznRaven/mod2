@@ -11,10 +11,9 @@ export default function News() {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        const data = await (await fetch(url)).json();
-        console.log(data.articles);
-        setData(data);
-        let mapNews = await data.articles.map((x, i) => {
+        const datas = await (await fetch(url)).json();
+        console.log(datas.articles);
+        let mapNews = datas.articles.map((x, i) => {
           return (
             <div>
               <a href={x.url} target="_blank" rel="noreferrer">
