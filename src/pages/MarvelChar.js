@@ -1,6 +1,8 @@
 import MD5 from "crypto-js/md5";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export default function MarvelChar() {
   const [data, setData] = useState({});
@@ -42,13 +44,17 @@ export default function MarvelChar() {
   };
   return (
     <div className="cmarvel">
+        <Link to='/marvel'>
+            
       <img
         src={require("../img/marvel_logo.png")}
         alt="marvel"
         style={{ width: "400px" }}
-      ></img>
+        ></img>
+        </Link> 
+
       <div></div>
-      <input
+      {/* <input
         value={input}
         onChange={(e) => {
           setInput(e.target.value);
@@ -60,7 +66,7 @@ export default function MarvelChar() {
         }}
       >
         Submit
-      </button>
+      </button> */}
       <br />
       <br />
       <br />
@@ -70,7 +76,8 @@ export default function MarvelChar() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-        //   border: "1px solid white",
+        //   border: "15px solid blue",
+          height: "100%"
         //   marginLeft: "auto",
         }}
       >
