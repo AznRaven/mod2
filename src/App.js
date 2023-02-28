@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Nav from './components/Nav';
 import Giphy from "./pages/Giphy";
 import Marvel from "./pages/Marvel";
+import MarvelChar from "./pages/MarvelChar";
 import News from "./pages/News";
 import Weather from "./pages/Weather";
 import Pokemons from './pages/Pokemons';
@@ -20,6 +21,7 @@ export default function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/giphy' element={<Giphy/>} />
         <Route path="/marvel" element={<Marvel/>} />
+        <Route path="/marvel_char/:symbol" element={<MarvelChar/>} />
         <Route path="/news" element={<News/>} />
         <Route path="/pokemons" element={<Pokemons/>} />
         <Route path="/pokemon/:symbol" element={<Pokemon/>} />

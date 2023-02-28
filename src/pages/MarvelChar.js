@@ -1,12 +1,14 @@
 import MD5 from "crypto-js/md5";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-export default function Marvel() {
+export default function MarvelChar() {
   const [data, setData] = useState({});
   const [input, setInput] = useState("");
   const [error, setError] = useState(null);
   const [name, setName] = useState("hulk");
+  let { symbol } = useParams();
+
 
   let key1 = process.env.REACT_APP_MARVEL_PUBLIC;
   let key2 = process.env.REACT_APP_MARVEL_PRIVATE;
@@ -22,8 +24,8 @@ export default function Marvel() {
       console.log(ts);
 
       let hash = MD5(ts + key2 + key1).toString();
-      let base = `https://gateway.marvel.com/v1/public/characters`;
-      let url = `${base}?ts=${ts}&apikey=${key1}&hash=${hash}&limit=100&nameStartsWith=${name}`;
+      let base = `https://gateway.marvel.com/v1/public/characters/`;
+      let url = `${base}${symbol}?ts=${ts}&apikey=${key1}&hash=${hash}&limit=100`;
 
       console.log(url);
 
@@ -75,31 +77,27 @@ export default function Marvel() {
               
             }}
           >
-            {data.data.results.map((x, i) => {
               return (
                 <div
-                  key={x.id}
                   style={{
                     color: "white",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    border: "1px solid white"
+                    border: "1px solid white",
+                    // marginLeft: "auto"
                   }}
                 >
                     
-                  <h1>{x.name}</h1>
-                    <Link to={`/marvel_char/${x.id}`}>
+                  <h1>{data.data.results[0].name}</h1>
                   <img
                     style={{ width: "300px" }}
-                    src={`${x.thumbnail.path}.${x.thumbnail.extension}`}
-                    alt={x.name}
+                    src={`${data.data.results[0].thumbnail.path}.${data.data.results[0].thumbnail.extension}`}
+                    alt={data.data.results[0].name}
                     />
-                    </Link>
-                  <p>{x.description}</p>
+                  <p>{data.data.results[0].description}</p>
                 </div>
               );
-            })}
           </div>
 
           <div></div>
