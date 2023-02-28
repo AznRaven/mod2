@@ -10,20 +10,24 @@ export default function News() {
 
   useEffect(() => {
     const dataFetch = async () => {
-      const data = await (await fetch(url)).json();
-      console.log(data.articles);
-      setData(data);
-      let mapNews = await data.articles.map((x, i) => {
-        return (
-          <div>
-            <a href={x.url} target="_blank" rel="noreferrer">
-              <h2>{x.title}</h2>
-            </a>
-            {x.urlToImage && <img src={x.urlToImage} alt={x.title}></img>}
-          </div>
-        );
-      });
-      setData(mapNews);
+      try {
+        const data = await (await fetch(url)).json();
+        console.log(data.articles);
+        setData(data);
+        let mapNews = await data.articles.map((x, i) => {
+          return (
+            <div>
+              <a href={x.url} target="_blank" rel="noreferrer">
+                <h2>{x.title}</h2>
+              </a>
+              {x.urlToImage && <img src={x.urlToImage} alt={x.title}></img>}
+            </div>
+          );
+        });
+        setData(mapNews);
+      } catch (e) {
+        console.error(e)
+      }
     };
 
     dataFetch();
