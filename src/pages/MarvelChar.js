@@ -9,7 +9,6 @@ export default function MarvelChar() {
   const [name, setName] = useState("hulk");
   let { symbol } = useParams();
 
-
   let key1 = process.env.REACT_APP_MARVEL_PUBLIC;
   let key2 = process.env.REACT_APP_MARVEL_PRIVATE;
 
@@ -43,7 +42,6 @@ export default function MarvelChar() {
   };
   return (
     <div className="cmarvel">
-      
       <img
         src={require("../img/marvel_logo.png")}
         alt="marvel"
@@ -63,46 +61,28 @@ export default function MarvelChar() {
       >
         Submit
       </button>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
+      <div
+        style={{
+          color: "white",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        //   border: "1px solid white",
+        //   marginLeft: "auto",
+        }}
+      >
+        <h1>{data?.data?.results[0]?.name}</h1>
+        <img
+          style={{ width: "300px" }}
+          src={`${data?.data?.results[0]?.thumbnail.path}.${data?.data?.results[0]?.thumbnail.extension}`}
+          alt={data?.data?.results[0]?.name}
+        />
+        <p>{data?.data?.results[0]?.description}</p>
+      </div>
       {error && <div>Error: {error}</div>}
-      {data?.data?.results && (
-        <>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gridGap: "20px",
-              
-            }}
-          >
-              return (
-                <div
-                  style={{
-                    color: "white",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    border: "1px solid white",
-                    // marginLeft: "auto"
-                  }}
-                >
-                    
-                  <h1>{data.data.results[0].name}</h1>
-                  <img
-                    style={{ width: "300px" }}
-                    src={`${data.data.results[0].thumbnail.path}.${data.data.results[0].thumbnail.extension}`}
-                    alt={data.data.results[0].name}
-                    />
-                  <p>{data.data.results[0].description}</p>
-                </div>
-              );
-          </div>
-
-          <div></div>
-        </>
-      )}
     </div>
   );
 }
