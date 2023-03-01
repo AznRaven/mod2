@@ -14,7 +14,6 @@ export default function RickAndMorty() {
   const dataFetch = async () => {
     try {
       let search = `?name=${name}`
-
       let base = `https://rickandmortyapi.com/api`;
       let url = `${base}/character/${search}`;
 
@@ -93,7 +92,10 @@ export default function RickAndMorty() {
             })}
           </div>
 
-          <div></div>
+          <div>
+            {data?.info?.prev && <button>Prev</button>}
+            {data?.info?.next && <button>Next</button>}
+          </div>
         </>
       )}
     </div>
