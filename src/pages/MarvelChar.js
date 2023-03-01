@@ -82,7 +82,7 @@ export default function MarvelChar() {
           src={`${data?.data?.results[0]?.thumbnail.path}.${data?.data?.results[0]?.thumbnail.extension}`}
           alt={data?.data?.results[0]?.name}
         />
-        <h2 style={{ width:'20vw' }}>{data?.data?.results[0]?.description}</h2>
+        <h2 style={{ width:'75vw' }}>{data?.data?.results[0]?.description}</h2>
         <div>
           <div className="mchar">
             <div>

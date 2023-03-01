@@ -24,7 +24,7 @@ export default function Giphy() {
       <img
         src={require("../img/giphy.png")}
         alt="giphy"
-        style={{ width: "400px" }}
+        style={{ width: "auto" }}
       ></img>
       <br />
       <br />
@@ -49,7 +49,7 @@ export default function Giphy() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gridGap: "20px",
           }}
         >
