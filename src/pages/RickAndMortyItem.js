@@ -39,19 +39,26 @@ export default function RickAndMortyItem() {
         style={{ width: "400px" }}
       ></img>
       <div></div>
-      <input
+      <br/>
+      <br/>
+      <br/>
+      <div className="continer-fluid d-flex justify-content-center ">
+        <input
+        className="input-group-text"
         value={input}
         onChange={(e) => {
           setInput(e.target.value);
         }}
       />
       <button
+      className="btn btn-outline-info"
         onClick={(e) => {
-          setName(input);
+            setName(input);
         }}
       >
         Submit
       </button>
+      </div>
       <br />
       <br />
       <br />

@@ -20,29 +20,33 @@ export default function Pokemon() {
   }, [url]);
 
   return (
-    <>
+    <div className="cpoke">
       <img
         src={require("../img/pokemon.png")}
         alt="pokemon"
         style={{ width: "400px" }}
       ></img>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       <div></div>
-<input
+      <div className="continer-fluid d-flex justify-content-center ">
+        <input
+        className="input-group-text"
         value={input}
         onChange={(e) => {
           setInput(e.target.value);
         }}
       />
       <button
+      className="btn btn-outline-danger"
         onClick={(e) => {
-          setPokemon(input);
+            setPokemon(input);
         }}
       >
         Submit
       </button>
+      </div>
       <h1>{data.name && <div>{data.name}</div>}</h1>
       {data.sprites && (
         <img
@@ -59,7 +63,6 @@ export default function Pokemon() {
         />
       )}
       <div></div>
-      
-    </>
+    </div>
   );
 }

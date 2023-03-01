@@ -48,19 +48,24 @@ export default function Marvel() {
         style={{ width: "400px" }}
       ></img>
       <div></div>
-      <input
+      <div className="continer-fluid d-flex justify-content-center ">
+        <input
+        className="input-group-text"
         value={input}
         onChange={(e) => {
           setInput(e.target.value);
         }}
       />
       <button
+      className="btn btn-outline-danger"
         onClick={(e) => {
           setName(input);
         }}
       >
         Submit
       </button>
+      </div>
+      
       <br/>
       <br/>
       <br/>

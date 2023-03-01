@@ -41,19 +41,23 @@ export default function Pokemons() {
       <br/>
       <br/>
       <br/>
-      <input
+      <div className="continer-fluid d-flex justify-content-center ">
+        <input
+        className="input-group-text"
         value={input}
         onChange={(e) => {
           setInput(e.target.value);
         }}
       />
       <button
+      className="btn btn-outline-success"
         onClick={(e) => {
-          setPokemon(input);
+            setPokemon(input);
         }}
       >
         Submit
       </button>
+      </div>
       {pokemons}
       {/* <Link to='/pokemon/:{1}'> */}
       {/* <h1>{data.results[0].name}</h1> */}

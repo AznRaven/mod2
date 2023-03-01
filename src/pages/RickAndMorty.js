@@ -6,6 +6,9 @@ export default function RickAndMorty() {
   const [input, setInput] = useState("");
   const [error, setError] = useState(null);
   const [name, setName] = useState("");
+  const [next, setNext] = useState();
+  const [prev, setPrev] = useState();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dataFetch();
@@ -13,7 +16,7 @@ export default function RickAndMorty() {
 
   const dataFetch = async () => {
     try {
-      let search = `?name=${name}`
+      let search = `?name=${name}`;
       let base = `https://rickandmortyapi.com/api`;
       let url = `${base}/character/${search}`;
 
@@ -22,7 +25,10 @@ export default function RickAndMorty() {
       const response = await fetch(url);
       const data = await response.json();
       setData(data);
-
+      console.log('next')
+      setNext(data.info.next)
+      setPrev(data.info.prev)
+      console.log(next)
       console.log(data);
 
       setError(null); // reset error state
@@ -31,6 +37,43 @@ export default function RickAndMorty() {
       setError(error.message);
     }
   };
+
+  const nextPage = async () => {
+   
+    try {
+      const response = await fetch(next);
+      const data = await response.json();
+      setData(data);
+      setNext(data.info.next)
+      setPrev(data.info.prev)
+      console.log('next')
+      console.log(next);
+      console.log(data)
+
+      setError(null); // reset error state
+    } catch (error) {
+      console.error(`error: ${error}`);
+      setError(error.message);
+    }
+  };
+  const prevPage = async () => {
+   
+    try {
+      const response = await fetch(prev);
+      const data = await response.json();
+      setData(data);
+      setNext(data.info.next)
+      setPrev(data.info.prev)
+      console.log('next')
+      console.log(next);
+
+      setError(null); // reset error state
+    } catch (error) {
+      console.error(`error: ${error}`);
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="cmarvel">
       <img
@@ -39,20 +82,34 @@ export default function RickAndMorty() {
         style={{ width: "400px" }}
       ></img>
       <div></div>
-      <input
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <button
-        onClick={(e) => {
-          setName(input);
-        }}
-      >
-        Submit
-      </button>
       <br />
+      <br />
+      <br />
+      <div className="continer-fluid d-flex justify-content-center ">
+        <input
+          className="input-group-text"
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+        />
+        <button
+          className="btn btn-outline-info"
+          onClick={(e) => {
+            setName(input);
+            console.log(name)
+          }}
+        >
+          Submit
+        </button>
+      </div>
+      <br />
+      {data?.info?.prev && <button className="btn btn-outline-info" onClick={prevPage}>
+        Prev
+      </button>}
+      <button className="btn btn-outline-info" onClick={nextPage}>
+        Next
+      </button>
       <br />
       <br />
       {error && <div>Error: {error}</div>}
@@ -68,26 +125,25 @@ export default function RickAndMorty() {
           >
             {data.results.map((x, i) => {
               return (
-
-                  <Link to={`/rick_morty/${x.id}`}>
-                <div
-                  key={x.id}
-                  style={{
-                    color: "white",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    border: "1px solid white",
-                  }}
-                >
-                  <h1>{x.name}</h1>
+                <Link key={x.id} to={`/rick_morty/${x.id}`}>
+                  <div
+                    key={x.id}
+                    style={{
+                      color: "white",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      border: "1px solid white",
+                    }}
+                  >
+                    <h1>{x.name}</h1>
                     <img
                       style={{ width: "200px" }}
                       src={x.image}
                       alt={x.name}
                     />
-                </div>
-                  </Link>
+                  </div>
+                </Link>
               );
             })}
           </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function Giphy() {
   const [data, setData] = useState([]);
-  const [input, setInput] = useState("random");
+  const [input, setInput] = useState("");
   const [search, setSearch] = useState("random");
 
   //   let key = 'HDeTBIMuoBW6DtzdV9Ui71Wvx36yPMav';
@@ -29,23 +29,28 @@ export default function Giphy() {
       <br />
       <br />
       <br />
-      <input
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <button
-        onClick={(e) => {
-          setSearch(input);
-        }}
-      >
-        Submit
-      </button>
+      <div className="continer-fluid d-flex justify-content-center ">
+        <input
+          className="input-group-text"
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+        />
+        <button
+          className="btn btn-outline-primary"
+          onClick={(e) => {
+            setSearch(input);
+          }}
+        >
+          Submit
+        </button>
+      </div>
+
       <br />
       <br />
       <br />
-      <div >
+      <div>
         <div
           style={{
             display: "grid",
@@ -54,7 +59,7 @@ export default function Giphy() {
           }}
         >
           {data.map((gif) => (
-            <div >
+            <div>
               <img
                 key={gif.id}
                 src={gif.images.fixed_height.url}

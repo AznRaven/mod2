@@ -60,6 +60,12 @@ img:hover {
   border-top: 5px solid red !important;
 }
 
+img:hover {
+  /* max-width: 100%; */
+  border-bottom: 5px solid blue;
+  border-top: 5px solid blue !important;
+}
+
 .articleC{
   display: flex;
   flex-wrap: wrap;
