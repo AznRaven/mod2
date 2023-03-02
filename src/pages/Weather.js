@@ -56,6 +56,9 @@ export default function Weather() {
         >
           Submit
         </button>
+        <br />
+        <br />
+        <br />
       </div>
       <h1 style={{fontSize:"8vh"}}>{data?.name}</h1>
       <br />
