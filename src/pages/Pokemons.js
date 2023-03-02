@@ -6,7 +6,8 @@ export default function Pokemons() {
   let [input, setInput] = useState("");
   let [pokemons, setPokemons] = useState("");
   let [pokemon, setPokemon] = useState("");
-  let [pNum, setPNum] = useState("");
+  let [filteredPokemons, setFilteredPokemons] = useState([]);
+  let [pokeArr, setPokeArr] = useState([]);
 
   useEffect(() => {
     let url = `https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0${pokemon}`;
@@ -17,8 +18,20 @@ export default function Pokemons() {
       console.log(data);
       setData(data);
       if (data.results) {
+        let pokeArr = data.results.map((x) => {
+          const nurl = x.url;
+          const number = nurl.split("/")[6];
+          return {
+            name: x.name,
+            url: x.url,
+            number: number,
+          };
+        });
+        setPokeArr(pokeArr);
+        console.log(pokeArr);
         let mapPokemon = data?.results?.map((x, i) => {
-          console.log(x);
+          // console.log(x);
+          // console.log(i);
           const nurl = x.url;
           const number = nurl.split("/")[6];
           return (
@@ -30,22 +43,45 @@ export default function Pokemons() {
             </div>
           );
         });
+        setFilteredPokemons(data.results);
         setPokemons(mapPokemon);
       } else {
         let mapPokemon = (
           <>
-            <h1 style={{color: 'white'}}>{data.name}</h1>
+            <h1 style={{ color: "white" }}>{data.name}</h1>
             <div>
-              {data.sprites?.front_default&&<img src={data.sprites?.front_default} alt={data.name}></img>}
-              {data.sprites?.front_shiny&&<img src={data.sprites?.front_shiny} alt={data.name}></img>}
-              {data.sprites?.front_female && <img src={data.sprites?.front_female} alt={data.name}></img>}
-              {data.sprites?.front_shiny_female && <img src={data.sprites?.front_shiny_female} alt={data.name}></img>}
+              {data.sprites?.front_default && (
+                <img src={data.sprites?.front_default} alt={data.name}></img>
+              )}
+              {data.sprites?.front_shiny && (
+                <img src={data.sprites?.front_shiny} alt={data.name}></img>
+              )}
+              {data.sprites?.front_female && (
+                <img src={data.sprites?.front_female} alt={data.name}></img>
+              )}
+              {data.sprites?.front_shiny_female && (
+                <img
+                  src={data.sprites?.front_shiny_female}
+                  alt={data.name}
+                ></img>
+              )}
             </div>
             <div>
-              {data.sprites?.back_default&&<img src={data.sprites?.back_default} alt={data.name}></img>}
-              {data.sprites?.back_shiny&&<img src={data.sprites?.back_shiny} alt={data.name}></img>}
-              {data.sprites?.back_female&&<img src={data.sprites?.back_female} alt={data.name}></img>}
-              {data.sprites?.back_shiny_female&&<img src={data.sprites?.back_shiny_female} alt={data.name}></img>}
+              {data.sprites?.back_default && (
+                <img src={data.sprites?.back_default} alt={data.name}></img>
+              )}
+              {data.sprites?.back_shiny && (
+                <img src={data.sprites?.back_shiny} alt={data.name}></img>
+              )}
+              {data.sprites?.back_female && (
+                <img src={data.sprites?.back_female} alt={data.name}></img>
+              )}
+              {data.sprites?.back_shiny_female && (
+                <img
+                  src={data.sprites?.back_shiny_female}
+                  alt={data.name}
+                ></img>
+              )}
             </div>
           </>
         );
@@ -73,6 +109,18 @@ export default function Pokemons() {
           value={input}
           onChange={(e) => {
             setInput(e.target.value);
+            let f = pokeArr.filter((x) => x.name.includes(e.target.value));
+            setPokemons(
+              f.map((x) => {
+                return (
+                  <div>
+                    <Link to={`/pokemon/${x.number}`}>
+                      <h1>{x.name}</h1>
+                    </Link>
+                  </div>
+                );
+              })
+            );
           }}
         />
         <button
@@ -84,7 +132,7 @@ export default function Pokemons() {
           Submit
         </button>
       </div>
-      {pokemons}
+      <div className="d-flex flex-wrap justify-content-evenly">{pokemons}</div>
     </div>
   );
 }
