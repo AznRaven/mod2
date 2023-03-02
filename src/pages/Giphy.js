@@ -12,7 +12,7 @@ export default function Giphy() {
   let key = process.env.REACT_APP_KEY;
 
   useEffect(() => {
-    let url = `https://api.giphy.com/v1/${apiType}/${apiEndpoint}?q=${search}&api_key=${key}`;
+    let url = `https://api.giphy.com/v1/${apiType}/${apiEndpoint}?q=${search}&limit=100&api_key=${key}`;
 
     const dataFetch = async () => {
       const response = await fetch(url);
@@ -95,7 +95,7 @@ export default function Giphy() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(5, 1fr)",
             gridGap: "20px",
           }}
         >
