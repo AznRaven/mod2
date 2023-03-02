@@ -14,6 +14,13 @@ export default function RickAndMorty() {
     dataFetch();
   }, [name]);
 
+  useEffect(() => {
+    if (next) {
+      const nUrl = new URL(next);
+      setPage(nUrl.searchParams.get('page'));
+    }
+  }, [next]);
+
   const dataFetch = async () => {
     try {
       let search = `?name=${name}`;
@@ -26,7 +33,7 @@ export default function RickAndMorty() {
       const data = await response.json();
       setData(data);
       console.log('next')
-      setNext(data.info.next)
+      setNext(data.info.next)      
       setPrev(data.info.prev)
       console.log(next)
       console.log(data);
@@ -56,8 +63,25 @@ export default function RickAndMorty() {
       setError(error.message);
     }
   };
-  const prevPage = async () => {
+  const goPage = async (e) => {
    
+    try {
+      const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${e.target.value}`);
+      const data = await response.json();
+      setData(data);
+      setNext(data.info.next)
+      setPrev(data.info.prev)
+      console.log('next')
+      console.log(next);
+      console.log(data)
+
+      setError(null); // reset error state
+    } catch (error) {
+      console.error(`error: ${error}`);
+      setError(error.message);
+    }
+  };
+  const prevPage = async () => {
     try {
       const response = await fetch(prev);
       const data = await response.json();
@@ -107,9 +131,24 @@ export default function RickAndMorty() {
       {data?.info?.prev && <button className="btn btn-outline-info" onClick={prevPage}>
         Prev
       </button>}
-      <button className="btn btn-outline-info" onClick={nextPage}>
+      {(Number(page) + 1) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 1} onClick={goPage}>
+        {Number(page) + 1}
+      </button>}
+      {(Number(page) + 2) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 2} onClick={goPage}>
+      {Number(page) + 2}
+      </button>}
+      {(Number(page) + 3) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 3} onClick={goPage}>
+      {Number(page) + 3}
+      </button>}
+      {(Number(page) + 4) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 4} onClick={goPage}>
+      {Number(page) + 4}
+      </button>}
+      {(Number(page) + 5) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 5} onClick={goPage}>
+      {Number(page) + 5}
+      </button>}
+      {data?.info?.next && <button className="btn btn-outline-info" onClick={nextPage}>
         Next
-      </button>
+      </button>}
       <br />
       <br />
       {error && <div>Error: {error}</div>}
@@ -149,8 +188,27 @@ export default function RickAndMorty() {
           </div>
 
           <div>
-            {data?.info?.prev && <button>Prev</button>}
-            {data?.info?.next && <button>Next</button>}
+          {data?.info?.prev && <button className="btn btn-outline-info" onClick={prevPage}>
+        Prev
+      </button>}
+      {(Number(page) + 1) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 1} onClick={goPage}>
+        {Number(page) + 1}
+      </button>}
+      {(Number(page) + 2) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 2} onClick={goPage}>
+      {Number(page) + 2}
+      </button>}
+      {(Number(page) + 3) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 3} onClick={goPage}>
+      {Number(page) + 3}
+      </button>}
+      {(Number(page) + 4) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 4} onClick={goPage}>
+      {Number(page) + 4}
+      </button>}
+      {(Number(page) + 5) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 5} onClick={goPage}>
+      {Number(page) + 5}
+      </button>}
+      {data?.info?.next && <button className="btn btn-outline-info" onClick={nextPage}>
+        Next
+      </button>}
           </div>
         </>
       )}

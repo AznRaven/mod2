@@ -4,29 +4,70 @@ export default function Giphy() {
   const [data, setData] = useState([]);
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("random");
+  const [isGiphyChecked, setIsGiphyChecked] = useState(true);
 
-  //   let key = 'HDeTBIMuoBW6DtzdV9Ui71Wvx36yPMav';
+  const apiType = isGiphyChecked ? "gifs" : "stickers";
+  const apiEndpoint = isGiphyChecked ? "search" : "search";
+
   let key = process.env.REACT_APP_KEY;
-  console.log(key);
+
   useEffect(() => {
-    let url = `https://api.giphy.com/v1/gifs/search?q=${search}&api_key=${key}`;
+    let url = `https://api.giphy.com/v1/${apiType}/${apiEndpoint}?q=${search}&api_key=${key}`;
+
     const dataFetch = async () => {
       const response = await fetch(url);
       const data = await response.json();
       setData(data.data);
+      console.log(data)
     };
 
     dataFetch();
-  }, [search]);
+  }, [search, apiType, apiEndpoint, key]);
 
   return (
     <div className="cmarvel">
-      <img
-        src={require("../img/giphy.png")}
-        alt="giphy"
-        style={{ width: "auto" }}
-      ></img>
-      <br />
+      <div className="">
+        <img
+          src={require("../img/giphy.png")}
+          alt="giphy"
+          style={{ width: "auto" }}
+        ></img>
+        <br />
+        <div className="d-flex justify-content-center">
+          {/* Giphy / Sticker */}
+          <div className="d-flex">
+            <div class="form-check me-5">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="apiType"
+                id="giphys"
+                value="gifs"
+                checked={isGiphyChecked}
+                onChange={() => setIsGiphyChecked(true)}
+              />
+              <label class="form-check-label" for="giphys">
+                Giphy
+              </label>
+            </div>
+            <div class="form-check me-5">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="apiType"
+                id="stickers"
+                value="stickers"
+                checked={!isGiphyChecked}
+                onChange={() => setIsGiphyChecked(false)}
+              />
+              <label class="form-check-label" for="stickers">
+                Sticker
+              </label>
+            </div>
+          </div>
+          {/* Giphy / Sticker */}
+        </div>
+      </div>
       <br />
       <br />
       <div className="continer-fluid d-flex justify-content-center ">
