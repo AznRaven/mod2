@@ -32,37 +32,37 @@ export default function Pokemon() {
       <div></div>
       <div className="continer-fluid d-flex justify-content-center ">
         <input
-        className="input-group-text"
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <button
-      className="btn btn-outline-danger"
-        onClick={(e) => {
+          className="input-group-text"
+          value={input}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
+        />
+        <button
+          className="btn btn-outline-danger"
+          onClick={(e) => {
             setPokemon(input);
-        }}
-      >
-        Submit
-      </button>
+          }}
+        >
+          Submit
+        </button>
       </div>
-      <h1>{data.name && <div>{data.name}</div>}</h1>
-      {data.sprites && (
-        <img
-          style={{ width: "30vh", height: "30vh" }}
-          src={data.sprites.front_default}
-          alt={data.name}
-        />
-      )}
-      {data.sprites && (
-        <img
-          style={{ width: "30vh", height: "30vh" }}
-          src={data.sprites.back_default}
-          alt={data.name}
-        />
-      )}
-      <div></div>
+      
+      <div>
+      <h1 style={{color: 'white'}}>{data.name}</h1>
+            <div>
+              {data.sprites?.front_default&&<img src={data.sprites?.front_default} alt={data.name}></img>}
+              {data.sprites?.front_shiny&&<img src={data.sprites?.front_shiny} alt={data.name}></img>}
+              {data.sprites?.front_female && <img src={data.sprites?.front_female} alt={data.name}></img>}
+              {data.sprites?.front_shiny_female && <img src={data.sprites?.front_shiny_female} alt={data.name}></img>}
+            </div>
+            <div>
+              {data.sprites?.back_default&&<img src={data.sprites?.back_default} alt={data.name}></img>}
+              {data.sprites?.back_shiny&&<img src={data.sprites?.back_shiny} alt={data.name}></img>}
+              {data.sprites?.back_female&&<img src={data.sprites?.back_female} alt={data.name}></img>}
+              {data.sprites?.back_shiny_female&&<img src={data.sprites?.back_shiny_female} alt={data.name}></img>}
+            </div>
+      </div>
     </div>
   );
 }
