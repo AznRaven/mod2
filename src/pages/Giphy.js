@@ -5,24 +5,39 @@ export default function Giphy() {
   const [input, setInput] = useState("");
   const [search, setSearch] = useState("random");
   const [isGiphyChecked, setIsGiphyChecked] = useState(true);
+  const [next, setNext] = useState(0);
+  const [prev, setPrev] = useState();
+  const [error, setError] = useState();
+  const [offset, setOffset] = useState(0);
 
   const apiType = isGiphyChecked ? "gifs" : "stickers";
   const apiEndpoint = isGiphyChecked ? "search" : "search";
 
   let key = process.env.REACT_APP_KEY;
-
+  
   useEffect(() => {
-    let url = `https://api.giphy.com/v1/${apiType}/${apiEndpoint}?q=${search}&limit=100&api_key=${key}`;
+    let url = `https://api.giphy.com/v1/${apiType}/${apiEndpoint}?q=${search}&limit=100&offset=${next}&api_key=${key}`;
 
     const dataFetch = async () => {
       const response = await fetch(url);
       const data = await response.json();
-      setData(data.data);
-      console.log(data)
+      setData(data?.data);
+      console.log(data?.pagination?.offset);
+      setNext(data?.pagination?.offset + 1);
+      console.log(data);
     };
 
     dataFetch();
   }, [search, apiType, apiEndpoint, key]);
+  const prevPage = () => {
+    setNext(next - 1);
+    setOffset((prevOffset) => prevOffset - 100);
+  };
+
+  const nextPage = () => {
+    setOffset((prevOffset) => prevOffset + 100);
+  setNext((prevNext) => prevNext + 1);
+  };
 
   return (
     <div className="cmarvel">
@@ -86,6 +101,16 @@ export default function Giphy() {
         >
           Submit
         </button>
+        {/* {next > 0 && (
+          <button className="btn btn-outline-info me-2" onClick={prevPage}>
+            Previous
+          </button>
+        )}
+        {next && (
+          <button className="btn btn-outline-info" onClick={nextPage}>
+            Next
+          </button>
+        )} */}
       </div>
 
       <br />
@@ -95,12 +120,13 @@ export default function Giphy() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)",
+            gridTemplateColumns: "repeat(4, 1fr)",
             gridGap: "20px",
           }}
         >
-          {data.map((gif) => (
+          {data?.map((gif) => (
             <div>
+              <div style={{ color: "white" }}>{gif.title}</div>
               <img
                 key={gif.id}
                 src={gif.images.fixed_height.url}

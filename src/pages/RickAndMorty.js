@@ -17,7 +17,7 @@ export default function RickAndMorty() {
   useEffect(() => {
     if (next) {
       const nUrl = new URL(next);
-      setPage(nUrl.searchParams.get('page'));
+      setPage(nUrl.searchParams.get("page"));
     }
   }, [next]);
 
@@ -32,10 +32,10 @@ export default function RickAndMorty() {
       const response = await fetch(url);
       const data = await response.json();
       setData(data);
-      console.log('next')
-      setNext(data.info.next)      
-      setPrev(data.info.prev)
-      console.log(next)
+      console.log("next");
+      setNext(data.info.next);
+      setPrev(data.info.prev);
+      console.log(next);
       console.log(data);
 
       setError(null); // reset error state
@@ -46,16 +46,15 @@ export default function RickAndMorty() {
   };
 
   const nextPage = async () => {
-   
     try {
       const response = await fetch(next);
       const data = await response.json();
       setData(data);
-      setNext(data.info.next)
-      setPrev(data.info.prev)
-      console.log('next')
+      setNext(data.info.next);
+      setPrev(data.info.prev);
+      console.log("next");
       console.log(next);
-      console.log(data)
+      console.log(data);
 
       setError(null); // reset error state
     } catch (error) {
@@ -64,16 +63,17 @@ export default function RickAndMorty() {
     }
   };
   const goPage = async (e) => {
-   
     try {
-      const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${e.target.value}`);
+      const response = await fetch(
+        `https://rickandmortyapi.com/api/character/?page=${e.target.value}`
+      );
       const data = await response.json();
       setData(data);
-      setNext(data.info.next)
-      setPrev(data.info.prev)
-      console.log('next')
+      setNext(data.info.next);
+      setPrev(data.info.prev);
+      console.log("next");
       console.log(next);
-      console.log(data)
+      console.log(data);
 
       setError(null); // reset error state
     } catch (error) {
@@ -86,9 +86,9 @@ export default function RickAndMorty() {
       const response = await fetch(prev);
       const data = await response.json();
       setData(data);
-      setNext(data.info.next)
-      setPrev(data.info.prev)
-      console.log('next')
+      setNext(data.info.next);
+      setPrev(data.info.prev);
+      console.log("next");
       console.log(next);
 
       setError(null); // reset error state
@@ -121,34 +121,68 @@ export default function RickAndMorty() {
           className="btn btn-outline-info"
           onClick={(e) => {
             setName(input);
-            console.log(name)
+            console.log(name);
           }}
         >
           Submit
         </button>
       </div>
       <br />
-      {data?.info?.prev && <button className="btn btn-outline-info" onClick={prevPage}>
-        Prev
-      </button>}
-      {(Number(page) + 1) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 1} onClick={goPage}>
-        {Number(page) + 1}
-      </button>}
-      {(Number(page) + 2) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 2} onClick={goPage}>
-      {Number(page) + 2}
-      </button>}
-      {(Number(page) + 3) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 3} onClick={goPage}>
-      {Number(page) + 3}
-      </button>}
-      {(Number(page) + 4) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 4} onClick={goPage}>
-      {Number(page) + 4}
-      </button>}
-      {(Number(page) + 5) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 5} onClick={goPage}>
-      {Number(page) + 5}
-      </button>}
-      {data?.info?.next && <button className="btn btn-outline-info" onClick={nextPage}>
-        Next
-      </button>}
+      {data?.info?.prev && (
+        <button className="btn btn-outline-info" onClick={prevPage}>
+          Prev
+        </button>
+      )}
+      {Number(page) + 1 <= data?.info?.pages && (
+        <button
+          className="btn btn-outline-info"
+          value={Number(page) + 1}
+          onClick={goPage}
+        >
+          {Number(page) + 1}
+        </button>
+      )}
+      {Number(page) + 2 <= data?.info?.pages && (
+        <button
+          className="btn btn-outline-info"
+          value={Number(page) + 2}
+          onClick={goPage}
+        >
+          {Number(page) + 2}
+        </button>
+      )}
+      {Number(page) + 3 <= data?.info?.pages && (
+        <button
+          className="btn btn-outline-info"
+          value={Number(page) + 3}
+          onClick={goPage}
+        >
+          {Number(page) + 3}
+        </button>
+      )}
+      {Number(page) + 4 <= data?.info?.pages && (
+        <button
+          className="btn btn-outline-info"
+          value={Number(page) + 4}
+          onClick={goPage}
+        >
+          {Number(page) + 4}
+        </button>
+      )}
+      {Number(page) + 5 <= data?.info?.pages && (
+        <button
+          className="btn btn-outline-info"
+          value={Number(page) + 5}
+          onClick={goPage}
+        >
+          {Number(page) + 5}
+        </button>
+      )}
+      {data?.info?.next && (
+        <button className="btn btn-outline-info" onClick={nextPage}>
+          Next
+        </button>
+      )}
       <br />
       <br />
       {error && <div>Error: {error}</div>}
@@ -175,12 +209,23 @@ export default function RickAndMorty() {
                       border: "1px solid white",
                     }}
                   >
-                    <h1>{x.name}</h1>
-                    <img
-                      style={{ width: "200px" }}
-                      src={x.image}
-                      alt={x.name}
-                    />
+                    <div className="d-flex">
+                      <div className="me-5">
+                        <h1>{x.name}</h1>
+                        <img
+                          style={{ width: "200px" }}
+                          src={x.image}
+                          alt={x.name}
+                        />
+                      </div>
+                      <div>
+                        <p>Origin: {x.origin.name}</p>
+                        <p>Gender: {x.gender}</p>
+                        <p>Location: {x.location.name}</p>
+                        <p>Species: {x.species}</p>
+                        <p>Status: {x.status}</p>
+                      </div>
+                    </div>
                   </div>
                 </Link>
               );
@@ -188,27 +233,61 @@ export default function RickAndMorty() {
           </div>
 
           <div>
-          {data?.info?.prev && <button className="btn btn-outline-info" onClick={prevPage}>
-        Prev
-      </button>}
-      {(Number(page) + 1) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 1} onClick={goPage}>
-        {Number(page) + 1}
-      </button>}
-      {(Number(page) + 2) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 2} onClick={goPage}>
-      {Number(page) + 2}
-      </button>}
-      {(Number(page) + 3) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 3} onClick={goPage}>
-      {Number(page) + 3}
-      </button>}
-      {(Number(page) + 4) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 4} onClick={goPage}>
-      {Number(page) + 4}
-      </button>}
-      {(Number(page) + 5) <= data?.info?.pages && <button className="btn btn-outline-info" value={Number(page) + 5} onClick={goPage}>
-      {Number(page) + 5}
-      </button>}
-      {data?.info?.next && <button className="btn btn-outline-info" onClick={nextPage}>
-        Next
-      </button>}
+            {data?.info?.prev && (
+              <button className="btn btn-outline-info" onClick={prevPage}>
+                Prev
+              </button>
+            )}
+            {Number(page) + 1 <= data?.info?.pages && (
+              <button
+                className="btn btn-outline-info"
+                value={Number(page) + 1}
+                onClick={goPage}
+              >
+                {Number(page) + 1}
+              </button>
+            )}
+            {Number(page) + 2 <= data?.info?.pages && (
+              <button
+                className="btn btn-outline-info"
+                value={Number(page) + 2}
+                onClick={goPage}
+              >
+                {Number(page) + 2}
+              </button>
+            )}
+            {Number(page) + 3 <= data?.info?.pages && (
+              <button
+                className="btn btn-outline-info"
+                value={Number(page) + 3}
+                onClick={goPage}
+              >
+                {Number(page) + 3}
+              </button>
+            )}
+            {Number(page) + 4 <= data?.info?.pages && (
+              <button
+                className="btn btn-outline-info"
+                value={Number(page) + 4}
+                onClick={goPage}
+              >
+                {Number(page) + 4}
+              </button>
+            )}
+            {Number(page) + 5 <= data?.info?.pages && (
+              <button
+                className="btn btn-outline-info"
+                value={Number(page) + 5}
+                onClick={goPage}
+              >
+                {Number(page) + 5}
+              </button>
+            )}
+            {data?.info?.next && (
+              <button className="btn btn-outline-info" onClick={nextPage}>
+                Next
+              </button>
+            )}
           </div>
         </>
       )}
