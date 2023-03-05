@@ -10,7 +10,7 @@ export default function Pokemons() {
   let [pokeArr, setPokeArr] = useState([]);
 
   useEffect(() => {
-    let url = `https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0${pokemon}`;
+    let url = `https://pokeapi.co/api/v2/pokemon/?limit=100000${pokemon}`;
 
     const dataFetch = async () => {
       console.log(url);
@@ -123,14 +123,16 @@ export default function Pokemons() {
             );
           }}
         />
-        <button
+        {/* <button
           className="btn btn-outline-success"
           onClick={() => {
+            console.log(pokemon)
             setPokemon(input);
+            console.log(pokemon)
           }}
         >
           Submit
-        </button>
+        </button> */}
       </div>
       <div className="d-flex flex-wrap justify-content-evenly">{pokemons}</div>
     </div>

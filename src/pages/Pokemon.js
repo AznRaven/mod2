@@ -9,6 +9,7 @@ export default function Pokemon() {
   let [pokemon, setPokemon] = useState("");
   let { symbol } = useParams();
 
+  
   let url = `https://pokeapi.co/api/v2/pokemon/${symbol}`;
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Pokemon() {
       <br />
       <div></div>
       <div className="continer-fluid d-flex justify-content-center ">
-        <input
+        {/* <input
           className="input-group-text"
           value={input}
           onChange={(e) => {
@@ -50,7 +51,7 @@ export default function Pokemon() {
           }}
         >
           Submit
-        </button>
+        </button> */}
       </div>
 
       <div>

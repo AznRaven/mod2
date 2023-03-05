@@ -1,38 +1,39 @@
-export default function About() {
+export default function About(test) {
   return (
     <>
-    
-    
-      
-      <table className="table table-bordered table-striped table-dark  ">
-  <thead>
-    <tr>
-      <th className="col-1" scope="col">#</th>
-      <th className="col-1" scope="col">First</th>
-      <th className="col-5" scope="col">Last</th>
-      <th className="col-5" scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+      {/* Sidebar */}
+      <div
+        class="offcanvas offcanvas-end show"
+        tabindex="-1"
+        id="offcanvas"
+        aria-labelledby="offcanvasLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">
+            Settings
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          Content for the offcanvas goes here. You can place just about any
+          Bootstrap component or custom elements here.
+        </div>
+      </div>
+      {/* Sidebar */}
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvas"
+        aria-controls="offcanvasExample"
+      >
+        Sidebar
+      </button>
     </>
   );
 }
