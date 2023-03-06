@@ -4,7 +4,7 @@ This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and M
 
 ## Table of Contents
 ## API's Used
-* [Giphy] (https://developers.giphy.com/)
+* [Giphy](https://developers.giphy.com/)
 * [Marvel](https://developer.marvel.com/)
 * [News](https://newsapi.org/)
 * [Pokemon](http://pokeapi.co/)
