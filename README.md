@@ -10,6 +10,15 @@ This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and M
 * [Rick and Morty](https://rickandmortyapi.com/documentation/)
 * [Weather](https://openweathermap.org/api)
 
+### Tech/Concept Used
+* Bootstrap
+* CSS
+* HTML
+* JavaScript
+* Pagination
+* React
+* useEffect, useParams, useState
+
 ### Installation
 To install and run this project on your local machine, follow these steps:
 
