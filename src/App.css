@@ -24,6 +24,14 @@
 .cpoke {
   background-color: black;
 }
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white
+}
 .mchar {
   display: flex;
   width: 100vw;
