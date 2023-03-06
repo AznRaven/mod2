@@ -3,7 +3,7 @@
 This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and Morty, and Weather to provide users with a comprehensive and entertaining experience.
 
 ## Table of Contents
-## API's Used
+### API's Used
 * [Giphy](https://developers.giphy.com/)
 * [Marvel](https://developer.marvel.com/)
 * [News](https://newsapi.org/)
@@ -11,7 +11,7 @@ This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and M
 * [Rick and Morty](https://rickandmortyapi.com/documentation/)
 * [Weather](https://openweathermap.org/api)
 
-## Installation
+### Installation
 To install and run this project on your local machine, follow these steps:
 
 Clone the repository to your local machine
@@ -20,15 +20,15 @@ Clone the repository to your local machine
 git clone https://github.com/https://github.com/AznRaven/mod2.git
 ```
 
-## Navigate to the project directory
+### Navigate to the project directory
 ```bash
 cd mod2
 ```
 
-## Install dependencies
+### Install dependencies
 
 ```npm install```
-## Start the server
+#### Start the server
 
 ```sql
 npm start
