@@ -4,13 +4,12 @@ This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and M
 
 ## Table of Contents
 ## API's Used
-* React
-* Giphy API
-* Marvel API
-* News API
-* Pokemon API
-* Rick and Morty API
-* Weather API
+* [Giphy] (https://developers.giphy.com/)
+* [Marvel](https://developer.marvel.com/)
+* [News](https://newsapi.org/)
+* [Pokemon](http://pokeapi.co/)
+* [Rick and Morty](https://rickandmortyapi.com/documentation/)
+* [Weather](https://openweathermap.org/api)
 
 ## Installation
 To install and run this project on your local machine, follow these steps:
