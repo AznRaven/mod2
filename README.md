@@ -2,7 +2,6 @@
 [Visit my website](https://ps-mod2.netlify.app/)
 This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and Morty, and Weather to provide users with a comprehensive and entertaining experience.
 
-## Table of Contents
 ### API's Used
 * [Giphy](https://developers.giphy.com/)
 * [Marvel](https://developer.marvel.com/)
