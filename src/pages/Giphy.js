@@ -12,7 +12,7 @@ export default function Giphy() {
   const [offset, setOffset] = useState(0);
   let test = 2;
 
-  const apiType = isGiphyChecked ? "gifs" : "stickers";
+  const apiType = isGiphyChecked ? "gifs" : "stickers"; // https//wwww.marvel.com : https//wwww.dc.com
   const apiEndpoint = isGiphyChecked ? "search" : "search";
 
   let key = process.env.REACT_APP_KEY;

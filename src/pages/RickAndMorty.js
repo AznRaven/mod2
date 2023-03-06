@@ -218,13 +218,13 @@ export default function RickAndMorty() {
                           alt={x.name}
                         />
                       </div>
-                      <div>
+                      {/* <div>
                         <p>Origin: {x.origin.name}</p>
                         <p>Gender: {x.gender}</p>
                         <p>Location: {x.location.name}</p>
                         <p>Species: {x.species}</p>
                         <p>Status: {x.status}</p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </Link>
@@ -291,6 +291,30 @@ export default function RickAndMorty() {
           </div>
         </>
       )}
+      {/* Sidebar */}
+      <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvas"
+          aria-labelledby="offcanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">
+              Settings
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            Content for the offcanvas goes here. You can place just about any
+            Bootstrap component or custom elements here.
+          </div>
+        </div>
+        {/* Sidebar */}
     </div>
   );
 }
