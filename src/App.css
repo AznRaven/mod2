@@ -140,3 +140,11 @@ img:hover {
 .timeRow > div {
   flex: 1;
 }
+.weather {
+  background-image: url(./img/rain.gif);
+  background-repeat: no-repeat; 
+  background-size: cover;
+  color: white;
+  text-shadow: 2px 2px red;
+
+}

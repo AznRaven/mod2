@@ -31,7 +31,7 @@ export default function Weather() {
   }, [city]);
 
   return (
-    <>
+    <div className="weather">
       <img
         src={require("../img/weather.png")}
         alt="weather"
@@ -97,6 +97,6 @@ export default function Weather() {
             {data.wind && <h2>Speed: {data.wind.speed}</h2>}
           </div>
       </div>
-    </>
+    </div>
   );
 }
