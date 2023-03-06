@@ -2,7 +2,7 @@
 This project utilizes 6 different APIs: Giphy, Marvel, News, Pokemon, Rick and Morty, and Weather to provide users with a comprehensive and entertaining experience.
 
 ## Table of Contents
-## Technologies Used
+## API's Used
 * React
 * Giphy API
 * Marvel API
